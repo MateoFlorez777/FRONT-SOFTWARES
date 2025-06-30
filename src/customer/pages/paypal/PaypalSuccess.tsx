@@ -11,7 +11,7 @@ const PaypalSuccess = () => {
     const createOrder = async () => {
       const token = localStorage.getItem("jwt");
       try {
-        const res = await axios.post(`${API_URL}/api/orders/create`, null, {
+        const res = await axios.post(`https://perfect-passion-production.up.railway.app/api/orders/create`, null, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
