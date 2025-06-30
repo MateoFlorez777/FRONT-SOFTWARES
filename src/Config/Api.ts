@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const API_URL = "http://localhost:5454";
+export const API_URL = "https://back-softwares-production.up.railway.app";
 // change api
 
 export const api = axios.create({
