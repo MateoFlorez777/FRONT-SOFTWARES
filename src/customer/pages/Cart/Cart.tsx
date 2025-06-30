@@ -69,7 +69,7 @@ const Cart = () => {
 
   const handleCheckout = async () => {
   try {
-    const res = await fetch("http://localhost:8080/api/paypal/payment", {
+    const res = await fetch("https://perfect-passion-production.up.railway.app/api/paypal/payment", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
