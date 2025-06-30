@@ -1,46 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../../../Config/Api";
 
 const PaypalSuccess = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    const completePaymentAndCreateOrder = async () => {
-      const queryParams = new URLSearchParams(location.search);
-      const paymentId = queryParams.get("paymentId");
-      const payerId = queryParams.get("PayerID");
+    const createOrder = async () => {
       const token = localStorage.getItem("jwt");
-
-      if (!paymentId || !payerId || !token) {
-        console.error("Faltan parámetros o token");
-        return;
-      }
-
       try {
-        // Paso 1: Ejecutar el pago
-        await axios.get(`${API_URL}/api/paypal/success`, {
-          params: { paymentId, PayerID: payerId },
-        });
-
-        // Paso 2: Crear la orden en backend
-        await axios.post(`${API_URL}/api/orders/create`, null, {
+        const res = await axios.post(`${API_URL}/api/orders/create`, null, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
 
+        console.log("Orden creada:", res.data);
+        // Mostrar modal después de crear la orden exitosamente
         setShowModal(true);
-      } catch (error) {
-        console.error("Error procesando el pago:", error);
+      } catch (err) {
+        console.error("Error creando la orden:", err);
       }
     };
 
-    completePaymentAndCreateOrder();
-  }, [location.search]);
+    createOrder();
+  }, []);
 
   const handleGoToOrders = () => {
     navigate("/account/orders");
@@ -50,6 +36,7 @@ const PaypalSuccess = () => {
     <div className="flex justify-center items-center h-screen">
       <p className="text-xl">Procesando tu pedido...</p>
 
+      {/* Modal de éxito */}
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded shadow-lg max-w-sm w-full">
