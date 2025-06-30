@@ -9,7 +9,7 @@ export const handleCheckout = async (amount: number) => {
 
     const formattedAmount = amount.toFixed(2);
 
-    const response = await fetch(`http://localhost:5454/api/paypal/pay?amount=${formattedAmount}`, {
+    const response = await fetch(`https://perfect-passion-production.up.railway.app/api/paypal/pay?amount=${formattedAmount}`, {
       headers: {
         Authorization: `Bearer ${jwt}`,
         "Content-Type": "application/json",
