@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const API_URL = "https://back-softwares-production.up.railway.app";
+export const API_URL = "https://perfect-passion-production.up.railway.app";
 // change api
 
 export const api = axios.create({
