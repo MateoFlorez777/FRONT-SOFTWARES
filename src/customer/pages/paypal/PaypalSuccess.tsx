@@ -1,32 +1,61 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../../../Config/Api";
 
 const PaypalSuccess = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    const createOrder = async () => {
-      const token = localStorage.getItem("jwt");
+    const completePaymentAndCreateOrder = async () => {
+      const jwt = localStorage.getItem("jwt");
+      if (!jwt) {
+        alert("Debes iniciar sesión para completar el pago.");
+        return;
+      }
+
+      // 1. Extraer los parámetros de la URL
+      const queryParams = new URLSearchParams(location.search);
+      const paymentId = queryParams.get("paymentId");
+      const tokenPaypal = queryParams.get("token");
+      const payerId = queryParams.get("PayerID");
+
+      if (!paymentId || !tokenPaypal || !payerId) {
+        alert("Faltan parámetros de PayPal en la URL.");
+        return;
+      }
+
       try {
-        const res = await axios.post(`https://perfect-passion-production.up.railway.app/api/orders/create`, null, {
+        // 2. Confirmar el pago con PayPal
+        await axios.post(
+          `${API_URL}/api/paypal/complete-payment?paymentId=${paymentId}&token=${tokenPaypal}&PayerID=${payerId}`,
+          null,
+          {
+            headers: {
+              Authorization: `Bearer ${jwt}`,
+            },
+          }
+        );
+
+        // 3. Crear la orden
+        const res = await axios.post(`${API_URL}/api/orders/create`, null, {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${jwt}`,
           },
         });
 
         console.log("Orden creada:", res.data);
-        // Mostrar modal después de crear la orden exitosamente
         setShowModal(true);
-      } catch (err) {
-        console.error("Error creando la orden:", err);
+      } catch (error) {
+        console.error("Error durante el proceso de pago:", error);
+        alert("Ocurrió un error al confirmar el pago o crear la orden.");
       }
     };
 
-    createOrder();
-  }, []);
+    completePaymentAndCreateOrder();
+  }, [location.search]);
 
   const handleGoToOrders = () => {
     navigate("/account/orders");
@@ -36,7 +65,6 @@ const PaypalSuccess = () => {
     <div className="flex justify-center items-center h-screen">
       <p className="text-xl">Procesando tu pedido...</p>
 
-      {/* Modal de éxito */}
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded shadow-lg max-w-sm w-full">
@@ -60,3 +88,4 @@ const PaypalSuccess = () => {
 };
 
 export default PaypalSuccess;
+
