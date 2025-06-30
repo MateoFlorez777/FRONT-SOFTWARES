@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../../../Config/Api";
 
@@ -10,47 +10,32 @@ const PaypalSuccess = () => {
 
   useEffect(() => {
     const completePaymentAndCreateOrder = async () => {
-      const jwt = localStorage.getItem("jwt");
-      if (!jwt) {
-        alert("Debes iniciar sesión para completar el pago.");
-        return;
-      }
-
-      // 1. Extraer los parámetros de la URL
       const queryParams = new URLSearchParams(location.search);
       const paymentId = queryParams.get("paymentId");
-      const tokenPaypal = queryParams.get("token");
       const payerId = queryParams.get("PayerID");
+      const token = localStorage.getItem("jwt");
 
-      if (!paymentId || !tokenPaypal || !payerId) {
-        alert("Faltan parámetros de PayPal en la URL.");
+      if (!paymentId || !payerId || !token) {
+        console.error("Faltan parámetros o token");
         return;
       }
 
       try {
-        // 2. Confirmar el pago con PayPal
-        await axios.post(
-          `${API_URL}/api/paypal/complete-payment?paymentId=${paymentId}&token=${tokenPaypal}&PayerID=${payerId}`,
-          null,
-          {
-            headers: {
-              Authorization: `Bearer ${jwt}`,
-            },
-          }
-        );
+        // Paso 1: Ejecutar el pago
+        await axios.get(`${API_URL}/api/paypal/success`, {
+          params: { paymentId, PayerID: payerId },
+        });
 
-        // 3. Crear la orden
-        const res = await axios.post(`${API_URL}/api/orders/create`, null, {
+        // Paso 2: Crear la orden en backend
+        await axios.post(`${API_URL}/api/orders/create`, null, {
           headers: {
-            Authorization: `Bearer ${jwt}`,
+            Authorization: `Bearer ${token}`,
           },
         });
 
-        console.log("Orden creada:", res.data);
         setShowModal(true);
       } catch (error) {
-        console.error("Error durante el proceso de pago:", error);
-        alert("Ocurrió un error al confirmar el pago o crear la orden.");
+        console.error("Error procesando el pago:", error);
       }
     };
 
@@ -88,4 +73,3 @@ const PaypalSuccess = () => {
 };
 
 export default PaypalSuccess;
-
