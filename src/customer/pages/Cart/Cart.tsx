@@ -179,7 +179,7 @@ const Cart = () => {
           variant="filled"
           sx={{ width: "100%" }}
         >
-          {coupone.error ? coupone.error : "Coupon Applied successfully"}
+          {coupone.error ? coupone.error : "Cupón aplicado exitosamente"}
         </Alert>
       </Snackbar>
     </>
