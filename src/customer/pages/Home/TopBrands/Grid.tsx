@@ -2,11 +2,11 @@ import React from "react";
 import { useAppSelector } from "../../../../Redux Toolkit/Store";
 
 const grid = [
-  {"categoryId":"women_lehenga_cholis",
+{"categoryId":"women_lehenga_cholis",
         "section": "GRID",
         "name": "women lehenga cholis",
     image:
-      "https://http2.mlstatic.com/D_NQ_NP_972200-MLU74088420395_012024-O-audifonos-inalambricos-wh-ch520.webp",
+      "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/23807268/2023/6/29/9930b235-5318-4755-abbe-08f99e969e781688026636544LehengaCholi7.jpg",
   },
   {"categoryId":"men_formal_shoes",
         "section": "GRID",
@@ -30,26 +30,14 @@ const grid = [
         "section": "GRID",
         "name": "women jewellery",
     image:
-      "https://http2.mlstatic.com/D_NQ_NP_972200-MLU74088420395_012024-O-audifonos-inalambricos-wh-ch520.webp",
+      "https://media.istockphoto.com/id/1276740597/photo/indian-traditional-gold-necklace.jpg?b=1&s=612x612&w=0&k=20&c=S-QnNZKqf2u3L-GIaDiIinNRU74GBWQaIDwY7gYJboY=",
   },
   {"categoryId":"women_footwear",
         "section": "GRID",
         "name": "women footwear",
     image:
       "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/13837166/2021/8/19/04e40e02-4c56-4705-94d0-f444b29973aa1629373611707-House-of-Pataudi-Women-Maroon-Embellished-Handcrafted-Wedges-1.jpg",
-  },
-    {"categoryId":"women_footwear",
-        "section": "GRID",
-        "name": "women footwear",
-    image:
-      "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/13837166/2021/8/19/04e40e02-4c56-4705-94d0-f444b29973aa1629373611707-House-of-Pataudi-Women-Maroon-Embellished-Handcrafted-Wedges-1.jpg",
-  },
-    {"categoryId":"women_footwear",
-        "section": "GRID",
-        "name": "women footwear",
-    image:
-      "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/13837166/2021/8/19/04e40e02-4c56-4705-94d0-f444b29973aa1629373611707-House-of-Pataudi-Women-Maroon-Embellished-Handcrafted-Wedges-1.jpg",
-  },
+  }
 ];
 
 const placeholderImage = "https://via.placeholder.com/300x200?text=Imagen+no+disponible";
