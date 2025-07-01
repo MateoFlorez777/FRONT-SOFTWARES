@@ -30,6 +30,6 @@ export const handleCheckout = async (amount: number) => {
     }
   } catch (error) {
     console.error("Error en handleCheckout:", error);
-    alert("Error al iniciar el pago con PayPal.");
+    alert("Error al iniciar el pago con PayPal...");
   }
 };
