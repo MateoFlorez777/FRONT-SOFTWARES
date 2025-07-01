@@ -95,20 +95,6 @@ const TopBrand = () => {
           alt=""
         />
       </div>
-            <div className="col-span-2 row-span-6 text-white rounded">
-        <img
-          className="w-full h-full object-cover border-fuchsia-800 lg:border-[9px]s rounded-md"
-          src={grid[6]?.image || placeholderImage}
-          alt=""
-        />
-      </div>
-            <div className="col-span-2 row-span-6 text-white rounded">
-        <img
-          className="w-full h-full object-cover border-fuchsia-800 lg:border-[9px]s rounded-md"
-          src={grid[7]?.image || placeholderImage}
-          alt=""
-        />
-      </div>
     </div>
   );
 };
