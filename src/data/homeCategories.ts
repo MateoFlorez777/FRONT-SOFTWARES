@@ -26,5 +26,19 @@ export const homeCategories = [
     name: "men sherwanis",
     image:
       "https://shreeman.in/cdn/shop/files/20_3cfbd5a3-ecb6-482a-b798-7ffd9de1c784.jpg?v=1712061674&width=700",
+  },
+  {
+    categoryId: "women_lehenga_cholis",
+    section: "GRID",
+    name: "women lehenga cholis",
+    image:
+      "https://images.pexels.com/photos/12730873/pexels-photo-12730873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
+  {
+    categoryId: "women_lehenga_cholis",
+    section: "GRID",
+    name: "women lehenga cholis",
+    image:
+      "https://images.pexels.com/photos/12730873/pexels-photo-12730873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   }
 ];
