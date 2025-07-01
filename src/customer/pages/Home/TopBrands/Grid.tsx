@@ -38,6 +38,18 @@ const grid = [
     image:
       "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/13837166/2021/8/19/04e40e02-4c56-4705-94d0-f444b29973aa1629373611707-House-of-Pataudi-Women-Maroon-Embellished-Handcrafted-Wedges-1.jpg",
   },
+    {"categoryId":"women_footwear",
+        "section": "GRID",
+        "name": "women footwear",
+    image:
+      "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/13837166/2021/8/19/04e40e02-4c56-4705-94d0-f444b29973aa1629373611707-House-of-Pataudi-Women-Maroon-Embellished-Handcrafted-Wedges-1.jpg",
+  },
+    {"categoryId":"women_footwear",
+        "section": "GRID",
+        "name": "women footwear",
+    image:
+      "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/13837166/2021/8/19/04e40e02-4c56-4705-94d0-f444b29973aa1629373611707-House-of-Pataudi-Women-Maroon-Embellished-Handcrafted-Wedges-1.jpg",
+  },
 ];
 
 const placeholderImage = "https://via.placeholder.com/300x200?text=Imagen+no+disponible";
