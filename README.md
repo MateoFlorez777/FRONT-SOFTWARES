@@ -12,7 +12,6 @@ Este es el frontend de la aplicación de ecommerce, desarrollado con **React**, 
 - MUI (Material UI)  
 - Axios  
 - React Router DOM  
-- Formik + Yup  
 
 ---
 
