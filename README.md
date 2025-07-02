@@ -43,8 +43,14 @@ npm start
 ```
 
 
-### ▶️ Url - Front Vercel
+### 🔗 Url - Front Vercel
 
 https://softwares-gamma.vercel.app/
 
+### 🧑‍💻 Integrantes:
+
+- Juan Mateo Rodríguez Flórez ☕
+- Santiago Infante Guzmán ⚛️
+- Andrés Felipe Culma Maceto ⚛️
+- Yesid Eduardo Muñoz Medina ⚛️
 
