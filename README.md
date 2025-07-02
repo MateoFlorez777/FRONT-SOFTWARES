@@ -45,7 +45,6 @@ npm start
 
 ### ▶️ Url - Front Vercel
 
-```bash
 https://softwares-gamma.vercel.app/
-```
+
 
