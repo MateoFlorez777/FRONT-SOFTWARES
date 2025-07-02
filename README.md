@@ -13,7 +13,6 @@ Este es el frontend de la aplicación de ecommerce, desarrollado con **React**, 
 - Axios  
 - React Router DOM  
 - Formik + Yup  
-- React Chart.js  
 
 ---
 
